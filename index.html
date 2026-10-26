@@ -39,8 +39,7 @@
 </main>
 <script>
   // The nightly automation replaces only this object when it publishes a new snapshot.
-  const syncedData = { used: 6, elapsed: 0.8450727513227513, updatedAt: '2026-10-26T03:24:47Z' };
-  const f = n => Number(n).toFixed(2);
+  const syncedData = { used: 10, elapsed: 4.46875, updatedAt: '2026-10-26T14:02:55Z' };const f = n => Number(n).toFixed(2);
   const used = Number(syncedData.used), elapsed = Number(syncedData.elapsed), delta = used - elapsed;
   document.querySelector('#used').innerHTML = `${f(used)}<small>%</small>`;
   document.querySelector('#fill').style.width = `${Math.min(100, Math.max(0, used))}%`;
