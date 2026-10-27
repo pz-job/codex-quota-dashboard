@@ -3,66 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffd98d">
-  <title>一周白饭额度</title>
+  <title>一周白饭额度 · 本地预览</title>
   <style>
-    :root{--ink:#493523;--muted:#8d7157;--cream:#fff6df;--paper:#ffedc3;--rice:#fffdf5;--rice-shadow:#e9d6aa;--orange:#f59f4c;--red:#df6d4e;--green:#72b88d}
-    *{box-sizing:border-box} body{margin:0;min-height:100vh;color:var(--ink);font:16px/1.5 ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:radial-gradient(circle at 8% 6%,#fffdf5 0 7px,transparent 8px) 0 0/43px 43px,linear-gradient(135deg,#fff3d5,#ffdca2);overflow-x:hidden}
-    main{max-width:980px;margin:auto;padding:38px 22px 32px} header{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:22px}.tag{display:inline-block;background:#fff7e6;border:2px solid #edbd74;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:800;color:#a76331;letter-spacing:.08em}h1{font-size:clamp(34px,6vw,62px);line-height:1.04;letter-spacing:-.075em;margin:11px 0 10px}.sub{max-width:590px;color:var(--muted);margin:0}.sync{white-space:nowrap;background:#fffaf0;border:2px solid #edc982;border-radius:20px;padding:10px 13px;color:#93603b;font-size:13px}.sync i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:6px;box-shadow:0 0 0 4px #d8f0df}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:stretch}.card{background:rgba(255,252,241,.88);border:2px solid rgba(184,119,57,.22);box-shadow:0 14px 0 rgba(183,115,51,.12),0 22px 40px rgba(118,73,28,.12);border-radius:30px;padding:23px}.bowl-card{padding:0;overflow:hidden;position:relative;min-height:430px;background:linear-gradient(#fff9e9,#ffecbd)}
-    .label{color:#9b775a;font-size:13px;font-weight:800;letter-spacing:.04em}.bowl-scene{height:430px;position:relative;display:flex;align-items:flex-end;justify-content:center;padding-bottom:27px}.steam{position:absolute;top:38px;left:50%;width:140px;height:90px;transform:translateX(-50%);opacity:.55;background:radial-gradient(ellipse at 20% 80%,transparent 0 14px,#fff 15px 18px,transparent 19px),radial-gradient(ellipse at 50% 55%,transparent 0 18px,#fff 19px 22px,transparent 23px),radial-gradient(ellipse at 80% 77%,transparent 0 13px,#fff 14px 17px,transparent 18px);filter:blur(1px)}
-    .rice-mountain{position:absolute;bottom:92px;width:min(76%,350px);height:calc(112px + var(--rice-level) * 1.82px);min-height:112px;border-radius:50% 50% 22% 22%/67% 67% 16% 16%;background:radial-gradient(ellipse at 23% 20%,#fff 0 3px,transparent 4px) 0 0/19px 15px,radial-gradient(ellipse at 73% 42%,#fff 0 3px,transparent 4px) 3px 5px/22px 17px,linear-gradient(135deg,#fffefa,#f7e9c9);border:3px solid #e7d3a3;border-bottom:0;box-shadow:inset -18px -15px 25px rgba(202,166,98,.13),0 -8px 16px rgba(243,207,132,.35);transition:height .8s cubic-bezier(.2,.8,.2,1)}
-    .bite{position:absolute;right:-15px;top:20%;width:75px;height:75px;border-radius:50%;background:#ffedc3;box-shadow:-5px 0 #e7d3a3;display:none}.bowl{position:relative;width:min(87%,430px);height:112px;border-radius:0 0 52% 52%/0 0 94% 94%;background:linear-gradient(#f6b968 0 17%,#ef8649 18% 67%,#d95e43 68%);border:4px solid #b85138;box-shadow:inset 0 -13px 0 rgba(135,58,39,.16),0 13px 0 rgba(137,66,38,.16)}.bowl:before{content:"";position:absolute;left:7%;right:7%;top:-16px;height:37px;border-radius:50%;background:#cc6841;border:4px solid #ae4c38;box-shadow:inset 0 7px 0 rgba(255,224,150,.28)}.bowl:after{content:"🍚";position:absolute;left:50%;top:30px;transform:translateX(-50%);font-size:33px;filter:drop-shadow(0 2px rgba(120,58,34,.2))}
-    .hero-caption{position:absolute;left:21px;top:20px;background:#fff8e8;border:2px solid #edc982;border-radius:16px;padding:9px 12px;font-weight:800}.hero-caption strong{color:#d96542;font-size:21px}.legend{position:absolute;right:18px;bottom:17px;color:#9a704f;font-size:12px}
-    .number{font-size:clamp(48px,7vw,77px);font-weight:900;line-height:.92;letter-spacing:-.08em;color:#dc6e48;margin:11px 0 18px}.number small{font-size:.36em;letter-spacing:0}.rice-left{font-size:25px;font-weight:900;color:#bb6c39;margin:4px 0 18px}.rice-left span{color:#df6d4e}.meter{height:16px;border-radius:99px;background:#f1dfb8;overflow:hidden;border:2px solid #e3c991}.meter i{display:block;height:100%;width:0;background:repeating-linear-gradient(105deg,#fffdf6 0 10px,#f3e1b8 11px 13px);border-radius:inherit;transition:width .8s ease}.row{display:flex;justify-content:space-between;gap:14px;padding:15px 0;border-bottom:1px dashed #e8cfa0}.row:last-child{border:0}.row span{color:#9a7658;font-size:13px}.row b{font-size:18px}.ahead{color:#47895f}.behind{color:#d76c43}.note{margin:18px 1px 0;color:#8e704f;font-size:13px}.note b{color:#b35a36}.updated{margin-top:23px;text-align:center;color:#9c795b;font-size:12px}
-    @media(max-width:720px){main{padding:26px 15px}header{display:block}.sync{display:inline-block;margin-top:16px}.hero{grid-template-columns:1fr}.bowl-card{min-height:390px}.bowl-scene{height:390px}.rice-mountain{height:calc(105px + var(--rice-level) * 1.55px)}}
+    :root{--ink:#4b3020;--muted:#957253;--paper:#fff2d2;--red:#b93822;--gold:#efa84a;--green:#43825a}*{box-sizing:border-box}
+    body{margin:0;min-height:100vh;color:var(--ink);font:16px/1.5 ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:radial-gradient(#fff9e8 1px,transparent 1px) 0 0/22px 22px,linear-gradient(145deg,#e8a05f 0 34%,#bd3829 34% 71%,#f1c36e 71%)}
+    main{max-width:1020px;margin:auto;padding:46px 22px 32px}.label{font-size:12px;font-weight:900;letter-spacing:.16em;color:#813323;background:#ffe9b3;padding:6px 10px;border-radius:99px;display:inline-block}h1{font-size:clamp(38px,6vw,74px);line-height:.96;letter-spacing:-.09em;margin:14px 0 12px;color:#fff8e7;text-shadow:0 4px #a82e23}.sub{max-width:590px;margin:0;color:#fff2cd;font-weight:700}.layout{display:grid;grid-template-columns:1.18fr .82fr;gap:22px;align-items:stretch;margin-top:28px}.card{background:rgba(255,248,229,.93);border:3px solid #fff4d8;border-radius:31px;box-shadow:0 13px 0 rgba(100,36,22,.25),0 28px 45px rgba(82,24,14,.18);padding:23px}
+    .rice-card{padding:0;min-height:590px;position:relative;overflow:hidden;background:radial-gradient(circle at 8% 9%,#fffdf7 0 2px,transparent 3px) 0 0/31px 31px,#f9d98c}.rice-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,rgba(168,48,30,.1));pointer-events:none}.caption{position:absolute;z-index:2;left:22px;top:22px;color:#813124;font-size:18px;font-weight:900;line-height:1.2}.caption strong{display:block;font-size:35px;letter-spacing:-.07em;color:#c3412c}.tower-wrap{height:580px;position:relative;display:flex;justify-content:center;align-items:flex-end}.tower{height:540px;width:88%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 15px 7px rgba(91,34,15,.22));clip-path:inset(calc(var(--used) * .74%) 0 0 0);transition:clip-path .9s ease}.token-mark{position:absolute;z-index:2;bottom:80px;left:50%;transform:translateX(-50%);padding:3px 13px 5px;border-radius:8px;border:2px solid rgba(119,50,19,.45);color:#fff0c9;background:rgba(139,58,20,.76);font:900 25px/.95 ui-rounded,system-ui;letter-spacing:.09em;text-shadow:0 2px 0 #7a3113;box-shadow:0 3px 0 rgba(92,37,13,.23)}.fish-buddy{position:absolute;z-index:4;right:-23px;bottom:12px;width:182px;filter:drop-shadow(0 10px 5px rgba(99,41,15,.24));transform:rotate(2deg);transition:transform .25s ease}.fish-buddy:hover{transform:rotate(-2deg) translateY(-4px)}.fish-bubble{position:absolute;z-index:5;right:132px;bottom:136px;background:#fff9e8;color:#93452b;border:2px solid #e2a059;border-radius:15px;padding:5px 8px;font-size:11px;font-weight:900;white-space:nowrap}.fish-bubble:after{content:"";position:absolute;right:-8px;bottom:7px;width:12px;height:12px;background:#fff9e8;border-right:2px solid #e2a059;border-top:2px solid #e2a059;transform:rotate(45deg)}.eaten{position:absolute;left:18px;bottom:18px;background:#fff4d9;color:#8b4829;border:2px solid #e0a75f;border-radius:18px;padding:8px 10px;font-size:12px;font-weight:800;z-index:3}
+    .stat{padding:16px 0;border-bottom:1px dashed #d9aa69}.stat:first-child{padding-top:1px}.stat:last-child{border:0}.stat span{display:block;font-size:13px;color:var(--muted);font-weight:700}.stat b{display:block;font-size:25px;letter-spacing:-.06em;margin-top:3px}.big{font-size:58px!important;color:#c6402b}.big small{font-size:.4em}.meter{height:17px;background:#ecd39b;border-radius:99px;overflow:hidden;border:2px solid #dca962;margin:10px 0 4px}.meter i{display:block;height:100%;background:repeating-linear-gradient(100deg,#fffef8 0 10px,#efdcae 11px 13px);border-radius:inherit}.hint{font-size:13px;color:#fff1d5;text-align:center;margin:24px 0 0}.hint b{color:#fff}
+    @media(max-width:720px){main{padding:28px 15px}.layout{grid-template-columns:1fr}.rice-card{min-height:520px}.tower-wrap{height:510px}.tower{height:470px}.fish-buddy{width:145px;right:-16px;bottom:17px}.fish-bubble{right:102px;bottom:121px}.caption strong{font-size:30px}}
   </style>
 </head>
 <body>
 <main>
-  <header>
-    <div><span class="tag">CODEX · WEEKLY RICE BOWL</span><h1>这一周的白饭，<br>还剩多少呀？</h1><p class="sub">整碗小山饭代表一整周的额度。每用一点，就吃掉一点；看一眼就懂啦。</p></div>
-    <div class="sync"><i></i>自动同步中</div>
-  </header>
-  <section class="hero">
-    <article class="card bowl-card">
-      <div class="hero-caption">本周已经吃掉 <strong id="used">0.00%</strong></div>
-      <div class="bowl-scene">
-        <div class="steam"></div><div class="rice-mountain" id="mountain"><div class="bite" id="bite"></div></div><div class="bowl"></div>
-      </div>
-      <div class="legend">饭山越高，代表本周可用额度越多</div>
+  <span class="label">CODEX WEEKLY TOKEN</span>
+  <h1>白饭堆成山，<br>才叫一周额度呀。</h1>
+  <p class="sub">整座饭塔代表满额；每用一点，塔尖就被吃掉一点。现在一眼能看出还剩多少饭。</p>
+  <section class="layout">
+    <article class="card rice-card">
+      <div class="caption">这周已经吃掉<strong id="used">0.00%</strong></div>
+      <div class="tower-wrap"><img class="tower" id="tower" src="rice-tower.png" alt="高高堆起的大米饭山"><span class="token-mark">TOKEN</span><span class="eaten" id="eaten">还很高</span><span class="fish-bubble">咩咩先吃一口！</span><img class="fish-buddy" src="mie-mie-eating-rice.png" alt="圆滚滚的小羊咩咩正在吃大米饭"></div>
     </article>
     <article class="card">
-      <div class="label">碗里还剩</div><div class="rice-left"><span id="remaining-rice">0.00%</span> 白饭</div>
-      <div class="meter" aria-label="剩余额度"><i id="meter"></i></div>
-      <div class="row"><span>截至现在，按计划该吃掉</span><b id="target">0.00%</b></div>
-      <div class="row"><span>目前进度</span><b id="pace">—</b></div>
-      <div class="row"><span>和计划相比</span><b id="delta">—</b></div>
-      <div class="row"><span>要追上当前计划</span><b id="gap">—</b></div>
+      <div class="stat"><span>碗里还剩</span><b class="big" id="left">0.00<small>%</small></b><div class="meter"><i id="meter"></i></div></div>
+      <div class="stat"><span>截至现在计划应已用</span><b id="target">0.00%</b></div>
+      <div class="stat"><span>和计划相比</span><b id="delta">—</b></div>
+      <div class="stat"><span>追上当前目标</span><b id="gap">—</b></div>
     </article>
   </section>
-  <p class="note" id="note"></p>
-  <div class="updated" id="updated">同步时间：—</div>
+  <p class="hint">饭塔随额度同步变化；无需为了吃完而刻意消耗额度。</p>
 </main>
 <script>
-  // The nightly automation replaces only this object when it publishes a new snapshot.
   const syncedData = { used: 10, elapsed: 4.46875, updatedAt: '2026-10-26T14:02:55Z' };
-  const fixed = function(n){ return Number(n).toFixed(2); };
-  const used = Math.max(0,Math.min(100,Number(syncedData.used)));
-  const elapsed = Math.max(0,Math.min(100,Number(syncedData.elapsed)));
-  const left = 100-used, delta = used-elapsed;
-  document.querySelector('#used').textContent=fixed(used)+'%';
-  document.querySelector('#remaining-rice').textContent=fixed(left)+'%';
+  const f=n=>Number(n).toFixed(2), used=Math.max(0,Math.min(100,Number(syncedData.used))), left=100-used, delta=used-Number(syncedData.elapsed);
+  document.querySelector('#used').textContent=f(used)+'%';
+  document.querySelector('#left').innerHTML=f(left)+'<small>%</small>';
   document.querySelector('#meter').style.width=left+'%';
-  document.querySelector('#mountain').style.setProperty('--rice-level',left);
-  document.querySelector('#target').textContent=fixed(elapsed)+'%';
-  document.querySelector('#pace').textContent=delta>=0?'吃得比计划快':'吃得比计划慢';
-  document.querySelector('#pace').className=delta>=0?'ahead':'behind';
-  document.querySelector('#delta').textContent=(delta>=0?'多吃了 ':'少吃了 ')+fixed(Math.abs(delta))+' 个百分点';
-  document.querySelector('#delta').className=delta>=0?'ahead':'behind';
-  document.querySelector('#gap').textContent=delta>=0?'不用追，已达标':'还差 '+fixed(Math.abs(delta))+'%';
-  document.querySelector('#note').innerHTML=elapsed<.05?'<b>提示：</b>周周期刚重置，使用比例按整数返回，短时间内难以精确判断进度。':'<b>小提醒：</b>这碗饭只用来观察节奏，不需要为了吃完而刻意消耗额度。';
-  document.querySelector('#updated').textContent='同步时间：'+new Date(syncedData.updatedAt).toLocaleString('zh-CN',{hour12:false,timeZone:'Asia/Shanghai'});
+  document.querySelector('#tower').style.setProperty('--used',used);
+  document.querySelector('#target').textContent=f(syncedData.elapsed)+'%';
+  document.querySelector('#delta').textContent=(delta>=0?'多吃了 ':'少吃了 ')+f(Math.abs(delta))+' 个百分点';
+  document.querySelector('#gap').textContent=delta>=0?'不用追，已达标':'还差 '+f(Math.abs(delta))+'%';
+  document.querySelector('#eaten').textContent=used<20?'饭山还很高':used<60?'饭山吃掉一半啦':'饭山快见底啦';
 </script>
 </body>
 </html>
