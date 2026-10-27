@@ -33,7 +33,7 @@
   <p class="hint">饭塔随额度同步变化；无需为了吃完而刻意消耗额度。</p>
 </main>
 <script>
-  const syncedData = { used: 27, elapsed: 15.155092592592592, updatedAt: '2026-10-27T08:00:06Z' };const f=n=>Number(n).toFixed(2), used=Math.max(0,Math.min(100,Number(syncedData.used))), left=100-used, delta=used-Number(syncedData.elapsed);
+  const syncedData = { used: 35, elapsed: 18.735119047619047, updatedAt: '2026-10-27T14:00:58Z' };const f=n=>Number(n).toFixed(2), used=Math.max(0,Math.min(100,Number(syncedData.used))), left=100-used, delta=used-Number(syncedData.elapsed);
   document.querySelector('#used').textContent=f(used)+'%';
   document.querySelector('#left').innerHTML=f(left)+'<small>%</small>';
   document.querySelector('#meter').style.width=left+'%';
