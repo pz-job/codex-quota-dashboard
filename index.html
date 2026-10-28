@@ -17,7 +17,7 @@
 <main>
   <span class="label">CODEX WEEKLY TOKEN</span>
   <h1>白饭堆成山，<br>才叫一周额度呀。</h1>
-  <p class="sub">整座饭塔代表满额；每用一点，塔尖就被吃掉一点。现在一眼能看出还剩多少饭。</p>
+  <p class="sub">周额度按工作日分配：工作日累进，周末暂停。饭塔同步展示实际用量和应完成目标。</p>
   <section class="layout">
     <article class="card rice-card">
       <div class="caption">这周已经吃掉<strong id="used">0.00%</strong></div>
@@ -25,20 +25,24 @@
     </article>
     <article class="card">
       <div class="stat"><span>碗里还剩</span><b class="big" id="left">0.00<small>%</small></b><div class="meter"><i id="meter"></i></div></div>
-      <div class="stat"><span>截至现在计划应已用</span><b id="target">0.00%</b></div>
+      <div class="stat"><span>按工作日计划应已用</span><b id="target">0.00%</b></div>
+      <div class="stat"><span>每工作日额度份额</span><b id="daily-share">20.00%</b></div>
+      <div class="stat"><span>今日计划份额</span><b id="today-share">0.00%</b></div>
       <div class="stat"><span>和计划相比</span><b id="delta">—</b></div>
       <div class="stat"><span>追上当前目标</span><b id="gap">—</b></div>
     </article>
   </section>
-  <p class="hint">饭塔随额度同步变化；无需为了吃完而刻意消耗额度。</p>
+  <p class="hint">额度按本周周期内的周一至周五等分，周末不增加目标；无需为了吃完而刻意消耗额度。</p>
 </main>
 <script>
-  const syncedData = { used: 35, elapsed: 18.735119047619047, updatedAt: '2026-10-27T14:00:58Z' };const f=n=>Number(n).toFixed(2), used=Math.max(0,Math.min(100,Number(syncedData.used))), left=100-used, delta=used-Number(syncedData.elapsed);
+  const syncedData = { used: 25, elapsed: 0, dailyShare: 20, todayShare: 0, updatedAt: '2026-10-28T13:15:06Z' };const f=n=>Number(n).toFixed(2), used=Math.max(0,Math.min(100,Number(syncedData.used))), left=100-used, delta=used-Number(syncedData.elapsed);
   document.querySelector('#used').textContent=f(used)+'%';
   document.querySelector('#left').innerHTML=f(left)+'<small>%</small>';
   document.querySelector('#meter').style.width=left+'%';
   document.querySelector('#tower').style.setProperty('--used',used);
   document.querySelector('#target').textContent=f(syncedData.elapsed)+'%';
+  document.querySelector('#daily-share').textContent=f(syncedData.dailyShare)+'%';
+  document.querySelector('#today-share').textContent=f(syncedData.todayShare)+'%';
   document.querySelector('#delta').textContent=(delta>=0?'多吃了 ':'少吃了 ')+f(Math.abs(delta))+' 个百分点';
   document.querySelector('#gap').textContent=delta>=0?'不用追，已达标':'还差 '+f(Math.abs(delta))+'%';
   document.querySelector('#eaten').textContent=used<20?'饭山还很高':used<60?'饭山吃掉一半啦':'饭山快见底啦';
