@@ -35,7 +35,7 @@
   <p class="hint">额度按本周周期内的周一至周五等分，周末不增加目标；无需为了吃完而刻意消耗额度。</p>
 </main>
 <script>
-  const syncedData = { used: 25, elapsed: 0, dailyShare: 20, todayShare: 0, updatedAt: '2026-10-28T13:15:06Z' };const f=n=>Number(n).toFixed(2), used=Math.max(0,Math.min(100,Number(syncedData.used))), left=100-used, delta=used-Number(syncedData.elapsed);
+  const syncedData = { used: 26, elapsed: 0, dailyShare: 20, todayShare: 0, updatedAt: '2026-10-28T14:00:32Z' };const f=n=>Number(n).toFixed(2), used=Math.max(0,Math.min(100,Number(syncedData.used))), left=100-used, delta=used-Number(syncedData.elapsed);
   document.querySelector('#used').textContent=f(used)+'%';
   document.querySelector('#left').innerHTML=f(left)+'<small>%</small>';
   document.querySelector('#meter').style.width=left+'%';
